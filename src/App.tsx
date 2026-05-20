@@ -250,18 +250,17 @@ export default function App() {
 
 /* ─── Status chip in header ─── */
 function StatusChip({ status, model }: { status: ConnStatus; model: string | null }) {
-  if (status === "idle") return null;
-
   const cfg = {
-    connecting: { bg: "rgba(175,175,181,0.18)", color: "var(--ms-gray-400)", dot: "var(--ms-gray-400)", label: "Connecting…" },
-    connected:  { bg: "rgba(27,122,74,0.15)",   color: "#1B7A4A",            dot: "#22c55e",            label: model?.split("/").pop() ?? "Connected" },
-    error:      { bg: "rgba(192,57,43,0.15)",    color: "#C0392B",            dot: "#C0392B",            label: "Not connected" },
+    idle:       { bg: "rgba(175,175,181,0.15)", color: "rgba(255,255,255,0.4)", dot: "rgba(255,255,255,0.3)", label: "Not configured",  pulse: false },
+    connecting: { bg: "rgba(175,175,181,0.18)", color: "rgba(255,255,255,0.6)", dot: "rgba(255,255,255,0.5)", label: "Connecting…",     pulse: true  },
+    connected:  { bg: "rgba(27,122,74,0.20)",   color: "#4ade80",               dot: "#22c55e",               label: model?.split("/").pop() ?? "Connected", pulse: false },
+    error:      { bg: "rgba(192,57,43,0.20)",    color: "#f87171",               dot: "#ef4444",               label: "Not connected",  pulse: false },
   }[status];
 
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-medium" style={{ background: cfg.bg, color: cfg.color }}>
+    <span className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[10px] font-medium" style={{ background: cfg.bg, color: cfg.color }}>
       <span
-        className={cn("h-1.5 w-1.5 rounded-full", status === "connecting" && "animate-pulse")}
+        className={cn("h-1.5 w-1.5 rounded-full shrink-0", cfg.pulse && "animate-pulse")}
         style={{ background: cfg.dot }}
       />
       {cfg.label}
