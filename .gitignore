@@ -1,4 +1,20 @@
-node_modules
-dist
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment / secrets
+.env
+.env.*
+
+# macOS
 .DS_Store
+
+# Editor / tooling
+.vscode/
+.idea/
 *.local
+
+# Claude Code project config
+.claude/
