@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    height: 100%;
+    width: 100%;
+  }
+
+  #root {
+    display: flex;
+    width: 100%;
+    min-height: 0;
+    flex: 1 1 0;
+    flex-direction: column;
+  }
+
+  :root {
+    /* Mount Sinai brand palette */
+    --ms-cyan:        #06ABEB;
+    --ms-magenta:     #DC298D;
+    --ms-navy:        #212070;
+    --ms-black:       #00002D;
+
+    --ms-cyan-10:     #E8F7FD;
+    --ms-cyan-20:     #C2EAFA;
+    --ms-magenta-10:  #FCE9F4;
+    --ms-navy-10:     #E8E8F3;
+    --ms-navy-20:     #C5C5DE;
+
+    --ms-gray-100:    #F5F5F7;
+    --ms-gray-200:    #E8E8EA;
+    --ms-gray-400:    #AFAFB5;
+    --ms-gray-600:    #6E6E77;
+    --ms-gray-800:    #2D2D35;
+  }
+
+  body {
+    margin: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 100dvh;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ms-black);
+    background: var(--ms-gray-100);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-text-size-adjust: 100%;
+  }
+}
+
+@layer utilities {
+  .chat-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ms-gray-400) transparent;
+  }
+  .chat-scroll::-webkit-scrollbar { width: 6px; }
+  .chat-scroll::-webkit-scrollbar-track { background: transparent; }
+  .chat-scroll::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background: var(--ms-gray-400);
+  }
+  .chat-scroll::-webkit-scrollbar-thumb:hover { background: var(--ms-gray-600); }
+}
